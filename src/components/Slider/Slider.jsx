@@ -25,8 +25,6 @@ const CardsContainer = styled.div`
 `;
 
 const Card = styled.div`
-  min-width: 24vw;
-  height: 55vh;
   margin: 5px;
   border-radius: 18px;
   background-color: #444;
@@ -39,20 +37,19 @@ const Card = styled.div`
   position: relative;
 
   @media (max-width: 768px) {
-    min-width: 45vw; /* Modificato per mostrare 2 card */
-    height: 30vh;
-    font-size: 1rem;
+    min-width: 52vw !important; /* 50% della larghezza dello schermo */
+    height: 50vh !important; /* Stessa altezza della larghezza per mantenere proporzioni */
   }
 
   @media (max-width: 1440px) {
-    margin-top: 5vh;
-    min-width: 32vw;
+    min-width: 24vw;
     height: 45vh;
   }
 
   @media (min-width: 1440px) {
-    min-width: 20vw;
-    height: 50vh;
+    margin-top: 8vh;
+    min-width: 19vw;
+    height: 55vh;
   }
 `;
 
@@ -105,7 +102,13 @@ const Slider = () => {
     const cardWidth = sliderRef.current.querySelector(".card").offsetWidth;
     let newIndex = currentIndex + direction;
 
+    // Calcola il nuovo indice per schermi piccoli
+    if (window.innerWidth <= 768) {
+      newIndex = currentIndex + direction * 1; // Sposta di 2 card
+    }
+
     setCurrentIndex(newIndex);
+
     sliderRef.current.style.transition = `transform 0.5s ease-in-out`;
     sliderRef.current.style.transform = `translateX(${
       -newIndex * cardWidth
@@ -115,20 +118,20 @@ const Slider = () => {
     setTimeout(() => {
       if (newIndex >= totalCards) {
         sliderRef.current.style.transition = "none";
-        newIndex = newIndex % totalCards; // Ricalcola il nuovo indice nel range della lista originale
+        newIndex = newIndex % totalCards;
         setCurrentIndex(newIndex);
         sliderRef.current.style.transform = `translateX(${
           -newIndex * cardWidth
         }px)`;
       } else if (newIndex < 0) {
         sliderRef.current.style.transition = "none";
-        newIndex = newIndex + totalCards; // Ricalcola il nuovo indice nel range della lista originale
+        newIndex = newIndex + totalCards;
         setCurrentIndex(newIndex);
         sliderRef.current.style.transform = `translateX(${
           -newIndex * cardWidth
         }px)`;
       }
-    }, 500); // Durata della transizione
+    }, 500);
   };
 
   return (
@@ -137,10 +140,7 @@ const Slider = () => {
         ◄
       </Arrow>
 
-      <CardsContainer
-        ref={sliderRef}
-        style={{ transform: `translateX(${-currentIndex * 45}vw)` }}
-      >
+      <CardsContainer ref={sliderRef}>
         {infiniteCards.map((card, index) => (
           <Card key={index} className="card">
             {card}

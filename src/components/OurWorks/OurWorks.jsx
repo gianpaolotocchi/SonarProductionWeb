@@ -7,7 +7,7 @@ import FootSection from './FootSection'
 import styled from 'styled-components';
 
 const ContentSection = styled.div`
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background-color: transparent;
   padding: 20px 0;

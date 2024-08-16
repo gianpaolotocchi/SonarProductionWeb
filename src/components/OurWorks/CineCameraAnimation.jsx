@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 
 // Animazione della rotazione su sé stessi per i rulli
 const rotateAnimation = keyframes`
@@ -54,13 +54,13 @@ const ScrollAnimationComponent = styled.svg`
   }
 
   @media (max-width: 768px) {
-    width: 30vw;
+    width: 25vw !important;
     height: auto;
-    top: 10%;
-    left: 70%;
+    top: 6% !important;
+
     margin-top: 0%;
   }
-  
+
   @media (max-width: 1440px) {
     width: 16vw;
     height: auto;
@@ -68,7 +68,7 @@ const ScrollAnimationComponent = styled.svg`
     left: 70%;
     margin-top: 0%;
   }
-  
+
   @media (min-width: 1440px) {
     width: 17vw;
     height: auto;
@@ -78,7 +78,8 @@ const ScrollAnimationComponent = styled.svg`
 `;
 
 const CameraWrapper = styled.g`
-  animation: ${jumpAndRotate} 5s ease-in-out infinite, ${bounce} 1s ease-in-out infinite;
+  animation: ${jumpAndRotate} 5s ease-in-out infinite,
+    ${bounce} 1s ease-in-out infinite;
 `;
 
 const Line = styled.line`
@@ -119,8 +120,8 @@ const CineCamera = ({ isVisible }) => {
   useEffect(() => {
     if (isVisible) {
       // Reset the animation by updating the key
-      setAnimationKey(prevKey => prevKey + 1);
-      
+      setAnimationKey((prevKey) => prevKey + 1);
+
       const timer = setTimeout(() => {
         setDelayedVisible(true);
       }, 0); // Optional delay before animation
@@ -134,7 +135,7 @@ const CineCamera = ({ isVisible }) => {
   return (
     <ScrollAnimationComponent
       key={animationKey} // Force re-render to reset animation
-      className={delayedVisible ? 'animate' : ''}
+      className={delayedVisible ? "animate" : ""}
       viewBox="0 0 120 120"
     >
       <CameraWrapper>

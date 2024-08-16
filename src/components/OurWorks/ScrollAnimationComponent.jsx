@@ -1,6 +1,5 @@
-
-import React, { useEffect, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 // Animazione della pennellata
 const brushStrokeAnimation = keyframes`
   0% {
@@ -21,28 +20,27 @@ const BrushStrokeSVG = styled.svg`
   top: 8%;
   z-index: 0;
   overflow: visible;
-  
 
   @media (max-width: 768px) {
-   width: 120%;
-  height: 30vh;
+    width: 120%;
+    height: 30vh;
     top: 0;
     left: -5%;
-    margin-top: -7%;
+
     padding: 0;
   }
   @media (max-width: 1440px) {
-  width: 130%;
-  height: 45vh;
+    width: 130%;
+    height: 45vh;
     top: -2%;
     left: -11%;
-    }
-    @media (min-width: 1440px) {
-  width: 150%;
-  height: 45vh;
+  }
+  @media (min-width: 1440px) {
+    width: 150%;
+    height: 45vh;
     top: 0;
     left: -27%;
-    }
+  }
 `;
 
 const BrushStrokePath = styled.path`
@@ -68,11 +66,11 @@ const BrushStrokePath = styled.path`
 const BrushStrokeAnimation = ({ isVisible }) => (
   <BrushStrokeSVG viewBox="0 0 100 20">
     <BrushStrokePath
-      className={isVisible ? 'showFromLeft' : ''}
+      className={isVisible ? "showFromLeft" : ""}
       d="M 10,10 Q 30,0 50,10 T 90,10"
     />
     <BrushStrokePath
-      className={isVisible ? 'showFromRight' : ''}
+      className={isVisible ? "showFromRight" : ""}
       d="M 10,10 Q 30,20 50,10 T 90,10"
     />
   </BrushStrokeSVG>
