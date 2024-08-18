@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import CineCamera from './CineCameraAnimation';
-import BrushStrokeAnimation from './ScrollAnimationComponent';
-import Slider from '../Slider/Slider';
-import FootSection from './FootSection';
-import styled from 'styled-components';
+import CineCamera from "./CineCameraAnimation";
+import BrushStrokeAnimation from "./ScrollAnimationComponent";
+import Slider from "../Slider/Slider";
+import FootSection from "./FootSection";
+import styled from "styled-components";
 
 const ContentSection = styled.div`
   height: 100vh;
@@ -18,7 +18,7 @@ const ContentSection = styled.div`
 const TitleOur = styled.h1`
   position: relative;
   z-index: 2;
-  color: rgb(240, 197, 74);
+  color: rgb(255, 195, 0);
   font-size: 3.5rem;
   text-align: start;
   margin-left: 1vh;
@@ -32,7 +32,7 @@ const TitleOur = styled.h1`
 const TitleWork = styled.h2`
   position: relative;
   z-index: 2;
-  color: rgb(240, 197, 74);
+  color: rgb(255, 195, 0);
   font-size: 3rem;
   text-align: start;
   margin-left: 5vh;
@@ -54,8 +54,8 @@ const TitleOurWork = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -64,8 +64,8 @@ const TitleOurWork = () => {
       <CineCamera isVisible={isVisible} />
       <TitleOur>Our</TitleOur>
       <TitleWork>Works</TitleWork>
-      <Slider/>
-      <FootSection/>
+      <Slider />
+      <FootSection />
     </ContentSection>
   );
 };

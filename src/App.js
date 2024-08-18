@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import Footer from "./components/Footer/Footer";
 import Contatti from "./pages/Contatti";
 import OurWorks from "../src/components/OurWorks/OurWorks";
+import ServicesOffered from "./components/ServicesOffered/ServicesOffered";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/contatti" element={<Contatti />} />
       </Routes>
       <OurWorks />
+      <ServicesOffered />
       <Footer />
     </>
   );

@@ -58,7 +58,7 @@ const BrushStrokePath = styled.path`
   }
 
   &.showFromRight {
-    stroke: #f0c54a;
+    stroke: rgb(255, 195, 0);
     animation: ${brushStrokeAnimation} 1.5s forwards;
   }
 `;

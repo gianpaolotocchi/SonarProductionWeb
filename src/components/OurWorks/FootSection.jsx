@@ -4,7 +4,7 @@ import styled from "styled-components";
 // Contenitore padre che gestisce i componenti
 const ContainerSection = styled.div`
   position: relative;
-  height: 15vh; /* Altezza adattabile */
+  height: 20vh; /* Altezza adattabile */
   width: 100%;
   display: flex;
   justify-content: center;
@@ -18,7 +18,7 @@ const ContainerSection = styled.div`
     align-items: center;
   }
   @media (min-width: 769px) {
-    width: 100%; /* 40% della larghezza del contenitore su schermi grandi */
+    width: 100%;
     justify-content: end;
     align-items: end;
   }
@@ -26,7 +26,6 @@ const ContainerSection = styled.div`
 
 // Paragrafo con posizione relativa all'interno del contenitore padre
 const Paragraph = styled.p`
-  font-size: 1rem;
   color: #000;
   text-align: justify;
   margin-bottom: 1rem; /* Spazio tra il paragrafo e il bottone */
@@ -38,17 +37,16 @@ const Paragraph = styled.p`
     margin-bottom: 20px; /* Spazio tra paragrafo e bottone */
   }
   @media (min-width: 769px) {
-    width: 60%;
-    font-size: 0.9rem;
+    width: 40%;
+    font-size: 1.1rem;
     text-align: start;
-    margin: 2vh 0;
-    padding-left: 3vh;
+    margin-right: 2vh;
   }
 `;
 
 // Bottone con posizione relativa all'interno del contenitore padre
 const Button = styled.button`
-  background-color: rgb(240, 197, 74);
+  background-color: rgb(255, 195, 0);
   color: #000;
   font-size: 1rem;
   padding: 1vh 2vh;
@@ -57,11 +55,13 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  box-shadow: 2px 2px 5px #000; /* Ombra */
 
   &:hover {
     background-color: #000;
-    color: rgb(240, 197, 74);
-    font-weight: bold;
+    color: rgb(255, 195, 0);
+    transform: scale(1.1); /* Ingrandisci senza spostare gli altri elementi */
   }
 
   @media (max-width: 768px) {

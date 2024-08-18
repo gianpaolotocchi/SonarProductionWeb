@@ -59,7 +59,7 @@ const Arrow = styled.div`
   transform: translateY(-50%);
   width: 65px;
   height: 65px;
-  background-color: rgb(240, 197, 74);
+  background-color: rgb(255, 195, 0) !important;
   display: flex;
   justify-content: center;
   align-items: center;
