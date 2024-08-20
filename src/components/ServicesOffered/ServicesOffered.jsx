@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-// import AnimationPage from "./AnimationPage";
+import AnimationPage from "./AnimationPage";
 
 const Container = styled.div`
   display: flex;
@@ -9,6 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   background-color: rgb(0, 0, 0);
   min-height: 100vh;
+  position: relative; /* Aggiungi questa proprietà */
 `;
 
 const TitleServices = styled.h1`
@@ -18,12 +19,11 @@ const TitleServices = styled.h1`
 `;
 
 const ContImg = styled.div`
-  height: 60vh;
-  width: 85vw;
-
-  background-image: url("https://picsum.photos/seed/picsum/600/800");
+  height: 200px;
+  width: 300px;
+  background-image: url("https://picsum.photos/seed/picsum/200/300");
   background-size: cover;
-  background-position: center;
+  background-position: contain;
   background-repeat: no-repeat;
   border-radius: 5vh;
   margin-bottom: 30px;
@@ -34,50 +34,12 @@ const ContFoot = styled.div`
   grid-template-columns: repeat(2, 1fr); /* 2 colonne su schermi piccoli */
   gap: 20px;
   width: 100%;
-
   padding: 0;
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr); /* 4 colonne su schermi più grandi */
     gap: 80px;
   }
-`;
-
-const drawCheckmark = keyframes`
-  to {
-    stroke-dashoffset: 0;
-  }
-`;
-
-const ListItem = styled.li`
-  color: white;
-  font-size: 1.5rem;
-  position: relative;
-  list-style-type: none;
-  padding: 20px;
-  margin: 10px;
-  text-align: center;
-  background: transparent;
-  border-radius: 8px;
-`;
-
-const Checkmark = styled.svg`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  stroke: #4caf50;
-  stroke-width: 4px;
-  fill: none;
-  stroke-linecap: round;
-  stroke-dasharray: 80;
-  stroke-dashoffset: 80;
-  animation: ${drawCheckmark} 0.7s ease forwards;
-  animation-delay: ${(props) => props.delay || 0}s;
-  opacity: 0.8;
-  z-index: 1; /* Spunta dietro al testo */
 `;
 
 const ButtonContainer = styled.div`
@@ -89,8 +51,6 @@ const ButtonContainer = styled.div`
 
   @media (min-width: 768px) {
     margin-top: 40px;
-  }
-  @media (max-width: 768px) {
   }
 `;
 
@@ -140,60 +100,40 @@ const ButtonContact = styled.button`
 `;
 
 const ServicesOffered = () => {
-  const [currentIndex, setCurrentIndex] = useState(-1);
-  const services = ["Consulenza", "Ripresa", "Montaggio", "Pubblicazione"];
+  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
   const contFootRef = useRef(null);
+  const animationRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && currentIndex === -1) {
-          setCurrentIndex(0);
-        }
-      },
-      {
-        threshold: 0.1,
-      }
-    );
+    if (animationRef.current) {
+      const animationObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsAnimationVisible(true);
+          } else {
+            setIsAnimationVisible(false);
+          }
+        },
+        { threshold: 0.5 }
+      );
 
-    if (contFootRef.current) {
-      observer.observe(contFootRef.current);
+      animationObserver.observe(animationRef.current);
+
+      return () => {
+        if (animationRef.current)
+          animationObserver.unobserve(animationRef.current);
+      };
     }
-
-    return () => {
-      if (contFootRef.current) {
-        observer.unobserve(contFootRef.current);
-      }
-    };
-  }, [currentIndex]);
-
-  useEffect(() => {
-    if (currentIndex >= 0 && currentIndex < services.length) {
-      const timer = setInterval(() => {
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 0);
-
-      return () => clearInterval(timer);
-    }
-  }, [currentIndex, services.length]);
+  }, []);
 
   return (
     <Container>
       <TitleServices>Services Offered</TitleServices>
-      {/* <AnimationPage /> */}
+      <div ref={animationRef}>
+        <AnimationPage isVisible={isAnimationVisible} />
+      </div>
       <ContImg />
-      <ContFoot ref={contFootRef}>
-        {services.map((service, index) => (
-          <ListItem key={index}>
-            {index < currentIndex && (
-              <Checkmark viewBox="0 0 50 50" delay={index * 0.5}>
-                <path d="M14 27 L22 35 L36 17" />
-              </Checkmark>
-            )}
-            {service}
-          </ListItem>
-        ))}
-      </ContFoot>
+      <ContFoot ref={contFootRef}></ContFoot>
       <ButtonContainer>
         <Paragraph>
           Contact us for more information on the services offered

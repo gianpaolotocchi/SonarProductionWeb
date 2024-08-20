@@ -23,7 +23,7 @@ const ScrollAnimationComponent = styled.svg`
   top: 10%;
   left: 80%;
   z-index: 1;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease-out;
 
   &.animate {
@@ -57,32 +57,32 @@ const ScrollAnimationComponent = styled.svg`
 const CameraWrapper = styled.g``;
 
 const Line = styled.line`
-  stroke: rgb(255, 195, 0);
+  stroke: #ffc300;
   stroke-width: 2;
   stroke-linecap: round;
 `;
 
 const Circle = styled.circle`
-  stroke: rgb(255, 195, 0);
+  stroke: #ffc300;
   stroke-width: 2;
   fill: none;
 `;
 
 const Rect = styled.rect`
-  stroke: rgb(255, 195, 0);
+  stroke: #ffc300;
   stroke-width: 2;
   fill: none;
 `;
 
 const Lens = styled.circle`
-  stroke: rgb(255, 195, 0);
+  stroke: #ffc300;
   stroke-width: 2;
   fill: none;
   animation: ${rotateOnScroll} 1.5s ease-in-out infinite;
 `;
 
 const Arm = styled.line`
-  stroke: rgb(255, 195, 0);
+  stroke: #ffc300;
   stroke-width: 2;
   stroke-linecap: round;
 `;
@@ -111,7 +111,7 @@ const AnimationPage = ({ isVisible }) => {
 
   return (
     <ScrollAnimationComponent
-      key={animationKey} // Force re-render to reset animation
+      //   key={animationKey} // Force re-render to reset animation
       className={delayedVisible ? "animate" : ""}
       viewBox="0 0 120 120"
     >

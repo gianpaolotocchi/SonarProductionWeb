@@ -8,6 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Contatti from "./pages/Contatti";
 import OurWorks from "../src/components/OurWorks/OurWorks";
 import ServicesOffered from "./components/ServicesOffered/ServicesOffered";
+import WhoWeAre from "./components/ChiSiamo/ChiSiamo";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
         <Route path="/contatti" element={<Contatti />} />
       </Routes>
+      <WhoWeAre />
       <OurWorks />
       <ServicesOffered />
       <Footer />
