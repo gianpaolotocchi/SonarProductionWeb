@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 import Contatti from "./pages/Contatti";
 import OurWorks from "../src/components/OurWorks/OurWorks";
 import ServicesOffered from "./components/ServicesOffered/ServicesOffered";
-import WhoWeAre from "./components/ChiSiamo/ChiSiamo";
+import WhoWeAre from "./components/ChiSiamo/ChiSiamo2.0";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);

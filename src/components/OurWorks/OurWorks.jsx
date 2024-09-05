@@ -1,52 +1,45 @@
 // Componente principale per unire le animazioni
 import React, { useEffect, useState } from "react";
-import CineCamera from './CineCameraAnimation';
-import BrushStrokeAnimation from './ScrollAnimationComponent';
-import Slider from '../Slider/Slider'
-import FootSection from './FootSection'
-import styled from 'styled-components';
+import CineCamera from "./CineCameraIMG";
+import BrushStrokeAnimation from "./ScrollAnimationComponent";
+import TitleOurWork from "./TitleOurWork";
+// import ContWaveUP from "./interSection";
+import Slider from "../Slider/Slider";
+import FootSection from "./FootSection";
+import styled from "styled-components";
 
 const ContentSection = styled.div`
   height: 100%;
   width: 100%;
-  background-color: transparent;
+  background-color: #fff;
   padding: 20px 0;
   margin: 0;
   position: relative;
   overflow: hidden;
-
 `;
+const ContWaveUP = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Assicurati che sia sotto gli altri elementi */
+  overflow: hidden;
+  line-height: 0;
 
-const TitleOur = styled.h1`
-  position: relative;
-  z-index: 2;
-  color: rgb(240, 197, 74);
-  font-size: 3.5rem;
-  text-align: start;
-  margin-left: 1vh;
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-    margin-left: 2vh;
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 20vh;
+    transform: rotate(180deg); /* Ruota la wave */
+  }
+
+  .shape-fill {
+    fill: #000;
   }
 `;
 
-const TitleWork = styled.h2`
-  position: relative;
-  z-index: 2;
-  color: rgb(240, 197, 74);
-  font-size: 3rem;
-  text-align: start;
-  margin-left: 5vh;
-  margin-top: -5vh;
-  
-  @media (max-width: 768px) {
-    font-size: 2rem;
-    margin-left: 5vh;
-  }
-`;
-
-const TitleOurWork = () => {
+const OurWork = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = () => {
@@ -56,21 +49,29 @@ const TitleOurWork = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <ContentSection>
-      <TitleOur>Our</TitleOur>
-      <TitleWork>Works</TitleWork>
-      <CineCamera isVisible={isVisible} />  
-      <BrushStrokeAnimation isVisible={isVisible} />
-      <Slider/>
-      <FootSection/>
-
+      <TitleOurWork />{" "}
+      {/* creare animazione in modo che il titolo una volta visibile mi entri da destra dopo il completamento dell' animazione  ContWaveUP  */}
+      <CineCamera isVisible={isVisible} />
+      {/* <BrushStrokeAnimation isVisible={isVisible} /> */}
+      <ContWaveUP>
+        <svg viewBox="0 0 1800 120" preserveAspectRatio="none">
+          <path
+            d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"
+            className="shape-fill"
+          ></path>
+        </svg>{" "}
+        {/* creare animazione che  una volta visibile mi scenda il componente come una tendina in modo da dare un effetto accattivante */}
+      </ContWaveUP>
+      <Slider />
+      <FootSection />
     </ContentSection>
   );
 };
 
-export default TitleOurWork;
+export default OurWork;

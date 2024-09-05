@@ -11,6 +11,27 @@ const Container = styled.div`
   min-height: 100vh;
   position: relative; /* Aggiungi questa proprietà */
 `;
+const ContWaveUP = styled.div`
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Assicurati che sia sotto gli altri elementi */
+  overflow: hidden;
+  line-height: 0;
+  transform: scaleX(-1) scaleY(-1);
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 20vh;
+  }
+
+  .shape-fill {
+    fill: #fff;
+  }
+`;
 
 const TitleServices = styled.h1`
   font-size: 3rem;
@@ -100,40 +121,52 @@ const ButtonContact = styled.button`
 `;
 
 const ServicesOffered = () => {
-  const [isAnimationVisible, setIsAnimationVisible] = useState(true);
-  const contFootRef = useRef(null);
-  const animationRef = useRef(null);
+  // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
+  // const contFootRef = useRef(null);
+  // const animationRef = useRef(null);
 
-  useEffect(() => {
-    if (animationRef.current) {
-      const animationObserver = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsAnimationVisible(true);
-          } else {
-            setIsAnimationVisible(false);
-          }
-        },
-        { threshold: 0.5 }
-      );
+  // useEffect(() => {
+  //   if (animationRef.current) {
+  //     const animationObserver = new IntersectionObserver(
+  //       ([entry]) => {
+  //         if (entry.isIntersecting) {
+  //           setIsAnimationVisible(true);
+  //         } else {
+  //           setIsAnimationVisible(false);
+  //         }
+  //       },
+  //       { threshold: 0.5 }
+  //     );
 
-      animationObserver.observe(animationRef.current);
+  //     animationObserver.observe(animationRef.current);
 
-      return () => {
-        if (animationRef.current)
-          animationObserver.unobserve(animationRef.current);
-      };
-    }
-  }, []);
+  //     return () => {
+  //       if (animationRef.current)
+  //         animationObserver.unobserve(animationRef.current);
+  //     };
+  //   }
+  // }, []);
 
   return (
     <Container>
       <TitleServices>Services Offered</TitleServices>
-      <div ref={animationRef}>
+      <ContWaveUP>
+        <svg
+          transform="scale(-1, 1)"
+          viewBox="0 0 1200 120"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"
+            className="shape-fill"
+          ></path>
+        </svg>
+      </ContWaveUP>
+      {/* <div ref={animationRef}>
         <AnimationPage isVisible={isAnimationVisible} />
-      </div>
+      </div> */}
       <ContImg />
-      <ContFoot ref={contFootRef}></ContFoot>
+      <ContFoot></ContFoot>
       <ButtonContainer>
         <Paragraph>
           Contact us for more information on the services offered

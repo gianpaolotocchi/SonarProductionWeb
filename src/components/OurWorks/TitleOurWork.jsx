@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
-import CineCamera from "./CineCameraAnimation";
-import BrushStrokeAnimation from "./ScrollAnimationComponent";
-import Slider from "../Slider/Slider";
-import FootSection from "./FootSection";
+import React from "react";
+
 import styled from "styled-components";
 
 const ContentSection = styled.div`
-  height: 100vh;
+  height: auto;
   width: 100%;
   background-color: transparent;
   padding: 20px 0;
@@ -18,10 +15,10 @@ const ContentSection = styled.div`
 const TitleOur = styled.h1`
   position: relative;
   z-index: 2;
-  color: rgb(255, 195, 0);
+  color: #ffc300;
   font-size: 3.5rem;
-  text-align: start;
-  margin-left: 1vh;
+  // text-align: start;
+  margin-left: 8vw;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -32,10 +29,11 @@ const TitleOur = styled.h1`
 const TitleWork = styled.h2`
   position: relative;
   z-index: 2;
-  color: rgb(255, 195, 0);
+  color: #000;
+
   font-size: 3rem;
-  text-align: start;
-  margin-left: 5vh;
+
+  margin-left: 10vw;
   margin-top: -5vh;
 
   @media (max-width: 768px) {
@@ -45,29 +43,27 @@ const TitleWork = styled.h2`
 `;
 
 const TitleOurWork = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
 
-  const handleScroll = () => {
-    const scrollPosition = window.scrollY;
-    const triggerPoint = window.innerHeight * 0.2;
-    setIsVisible(scrollPosition > triggerPoint);
-  };
+  // const handleScroll = () => {
+  //   const scrollPosition = window.scrollY;
+  //   const triggerPoint = window.innerHeight * 0.2;
+  //   setIsVisible(scrollPosition > triggerPoint);
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <ContentSection>
-      <BrushStrokeAnimation isVisible={isVisible} />
-      <CineCamera isVisible={isVisible} />
       <TitleOur>Our</TitleOur>
       <TitleWork>Works</TitleWork>
-      <Slider />
-      <FootSection />
     </ContentSection>
   );
 };
 
 export default TitleOurWork;
+
+// TODO creare animazione con titoli che entrano dall alto o nda des

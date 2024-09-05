@@ -37,8 +37,8 @@ const Paragraph = styled.p`
     margin-bottom: 20px; /* Spazio tra paragrafo e bottone */
   }
   @media (min-width: 769px) {
-    width: 40%;
-    font-size: 1.1rem;
+    width: 60%;
+    font-size: 1.3rem;
     text-align: start;
     margin-right: 2vh;
   }
@@ -46,10 +46,10 @@ const Paragraph = styled.p`
 
 // Bottone con posizione relativa all'interno del contenitore padre
 const Button = styled.button`
-  background-color: rgb(255, 195, 0);
+  background-color: #ffc300;
   color: #000;
   font-size: 1rem;
-  padding: 1vh 2vh;
+  padding: 2vh 4vh;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -60,7 +60,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: #000;
-    color: rgb(255, 195, 0);
+    color: #ffc300;
     transform: scale(1.1); /* Ingrandisci senza spostare gli altri elementi */
   }
 

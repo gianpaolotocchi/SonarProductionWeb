@@ -1,132 +1,51 @@
-import React, {useState} from 'react';
-import styled from 'styled-components';
-import logoSvg from '../../assets/Test-Logo.svg.png';
-import MenuLogo from '../../assets/menu.svg';
+import React, { useState } from "react";
+import styled from "styled-components";
+import logoSvg from "../../assets/Test-Logo.svg.png";
+import MenuLogo from "../../assets/Media/Photo/icons8-fotocamera-100.png";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
-  height: 5vh;
-  background-color: rgb(33,37,41);
-  display:flex;
+  height: 6vh;
+  background-color: #000;
+  display: flex;
   align-items: center;
   color: white;
-  position: sticky;
+  z-index: 100;
+  position: fixed;
+  //   top: 0; /* Fissa la navbar nella parte superiore */
+  //   left: 0; /* Allinea la navbar al lato sinistro */
   justify-content: space-between;
 `;
 
 const Logo = styled.img`
-    widht: 200px;
-    height: 100%;
-    cursor: pointer;
+  widht: 100px;
+  height: 100%;
+  margin-left: 2vh;
+  cursor: pointer;
 `;
 
 const Menu = styled.img`
-    widht: 50px;
-    height: 100%;
-    cursor: pointer;
+  widht: 100px;
+  height: 100%;
+  padding: 1vh;
+  border-radius: 1vh;
+  cursor: pointer;
+  margin-right: 2vh;
 `;
 
-
 const Navbar = (props) => {
-    const navigate = useNavigate();
-    return(
-        <Container>
-            <Logo src={logoSvg} alt="" onClick={() => navigate('/')} />
-            <Menu src={MenuLogo} alt ="" onClick={() => props.setIsOpen(!props.isOpen)}/>
-        </Container>
+  const navigate = useNavigate();
+  return (
+    <Container>
+      <Logo src={logoSvg} alt="" onClick={() => navigate("/")} />
+      <Menu
+        src={MenuLogo}
+        alt=""
+        onClick={() => props.setIsOpen(!props.isOpen)}
+      />
+    </Container>
+  );
+};
 
-    // <nav className="navbar navbar-dark bg-dark fixed-top">
-    //   <div className="container-fluid">
-    //     <button
-    //       className="navbar-toggler"
-    //       type="button"
-    //       data-bs-toggle="offcanvas"
-    //       data-bs-target="#offcanvasDarkNavbar"
-    //       aria-controls="offcanvasDarkNavbar"
-    //       aria-label="Toggle navigation"
-    //     >
-    //       <span className="navbar-toggler-icon"></span>
-    //     </button>
-    //     <div
-    //       className="offcanvas offcanvas-end text-bg-dark"
-    //       tabIndex="-1"
-    //       id="offcanvasDarkNavbar"
-    //       aria-labelledby="offcanvasDarkNavbarLabel"
-    //     >
-    //       <div className="offcanvas-header">
-    //         <h5 className="offcanvas-title" id="offcanvasDarkNavbarLabel">
-    //           Dark offcanvas
-    //         </h5>
-    //         <button
-    //           type="button"
-    //           className="btn-close btn-close-dark"
-    //           data-bs-dismiss="offcanvas"
-    //           aria-label="Close"
-    //         ></button>
-    //       </div>
-    //       <div className="offcanvas-body">
-    //         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
-    //           <li className="nav-item">
-    //             <a className="nav-link active" aria-current="page" href="#">
-    //               Home
-    //             </a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link" href="#">
-    //               Link
-    //             </a>
-    //           </li>
-    //           <li className="nav-item dropdown">
-    //             <a
-    //               className="nav-link dropdown-toggle"
-    //               href="#"
-    //               role="button"
-    //               data-bs-toggle="dropdown"
-    //               aria-expanded="false"
-    //             >
-    //               Dropdown
-    //             </a>
-    //             <ul className="dropdown-menu dropdown-menu-dark">
-    //               <li>
-    //                 <a className="dropdown-item" href="#">
-    //                   Action
-    //                 </a>
-    //               </li>
-    //               <li>
-    //                 <a className="dropdown-item" href="#">
-    //                   Another action
-    //                 </a>
-    //               </li>
-    //               <li>
-    //                 <hr className="dropdown-divider" />
-    //               </li>
-    //               <li>
-    //                 <a className="dropdown-item" href="#">
-    //                   Something else here
-    //                 </a>
-    //               </li>
-    //             </ul>
-    //           </li>
-    //         </ul>
-    //         <form className="d-flex mt-3" role="search">
-    //           <input
-    //             className="form-control me-2"
-    //             type="search"
-    //             placeholder="Search"
-    //             aria-label="Search"
-    //           />
-    //           <button className="btn btn-success" type="submit">
-    //             Search
-    //           </button>
-    //         </form>
-    //       </div>
-    //     </div>
-    //     <a className="navbar-brand" href="#">
-    //       Logo
-    //     </a>
-    //   </div>
-    // </nav>
-  )}
-  
 export default Navbar;

@@ -6,16 +6,19 @@ const SliderWrapper = styled.div`
   overflow: hidden;
   width: 100%;
   position: relative;
-  margin-top: 10vh;
 
   @media (max-width: 768px) {
     align-items: center;
   }
+  @media (max-width: 1140px) {
+    margin-top: 10vh;
+  }
+
   @media (max-width: 1440px) {
-    margin-top: 15vh;
+    margin-top: 5vh;
   }
   @media (min-width: 1440px) {
-    margin-top: 17.6vh;
+    margin-top: 5vh;
   }
 `;
 
