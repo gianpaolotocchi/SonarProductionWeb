@@ -1,6 +1,7 @@
 // Componente principale per unire le animazioni
 import React, { useEffect, useState } from "react";
-import CineCamera from "./CineCameraIMG";
+import { Element } from "react-scroll";
+import CiakSiGiraIMG from "./CiakSiGiraAnimation";
 import BrushStrokeAnimation from "./ScrollAnimationComponent";
 import TitleOurWork from "./TitleOurWork";
 // import ContWaveUP from "./interSection";
@@ -11,7 +12,7 @@ import styled from "styled-components";
 const ContentSection = styled.div`
   height: 100%;
   width: 100%;
-  background-color: #fff;
+  background-color: #fde34d;
   padding: 20px 0;
   margin: 0;
   position: relative;
@@ -30,7 +31,7 @@ const ContWaveUP = styled.div`
     position: relative;
     display: block;
     width: calc(100% + 1.3px);
-    height: 20vh;
+    height: 15vh;
     transform: rotate(180deg); /* Ruota la wave */
   }
 
@@ -44,7 +45,7 @@ const OurWork = () => {
 
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
-    const triggerPoint = window.innerHeight * 0.7;
+    const triggerPoint = window.innerHeight * 0.2;
     setIsVisible(scrollPosition > triggerPoint);
   };
 
@@ -54,23 +55,25 @@ const OurWork = () => {
   }, []);
 
   return (
-    <ContentSection>
-      <TitleOurWork />{" "}
-      {/* creare animazione in modo che il titolo una volta visibile mi entri da destra dopo il completamento dell' animazione  ContWaveUP  */}
-      <CineCamera isVisible={isVisible} />
-      {/* <BrushStrokeAnimation isVisible={isVisible} /> */}
-      <ContWaveUP>
-        <svg viewBox="0 0 1800 120" preserveAspectRatio="none">
-          <path
-            d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"
-            className="shape-fill"
-          ></path>
-        </svg>{" "}
-        {/* creare animazione che  una volta visibile mi scenda il componente come una tendina in modo da dare un effetto accattivante */}
-      </ContWaveUP>
-      <Slider />
-      <FootSection />
-    </ContentSection>
+    <Element name="OurWorks">
+      <ContentSection>
+        <TitleOurWork />{" "}
+        {/* creare animazione in modo che il titolo una volta visibile mi entri da destra dopo il completamento dell' animazione  ContWaveUP  */}
+        <CiakSiGiraIMG isVisible={isVisible} />
+        {/* <BrushStrokeAnimation isVisible={isVisible} /> */}
+        <ContWaveUP>
+          <svg viewBox="0 0 1800 120" preserveAspectRatio="none">
+            <path
+              d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"
+              className="shape-fill"
+            ></path>
+          </svg>{" "}
+          {/* creare animazione che  una volta visibile mi scenda il componente come una tendina in modo da dare un effetto accattivante */}
+        </ContWaveUP>
+        <Slider />
+        <FootSection />
+      </ContentSection>
+    </Element>
   );
 };
 

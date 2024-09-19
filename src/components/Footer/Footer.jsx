@@ -8,6 +8,7 @@ import {
   faLinkedin,
   faWhatsapp,
 } from "@fortawesome/free-brands-svg-icons";
+import { Element } from "react-scroll";
 
 const FooterContainer = styled.div`
   background-color: black;
@@ -98,60 +99,65 @@ const WhatsAppLink = ({ phoneNumber, message }) => {
 
 const Footer = () => {
   return (
-    <FooterContainer>
-      <Section>
-        <h4>Contattaci!</h4>
-        <Span>
-          Riccardo
-          <WhatsAppLink
-            phoneNumber="393936582715"
-            message="Ciao, ti scrivo dal tuo sito ed ho bisogno di un video potentissimo ."
-          />
-        </Span>
-        <Span>
-          Lorenzo
-          <WhatsAppLink
-            phoneNumber="393936582715"
-            message="Ciao, ti scrivo dal tuo sito ed ho bisogno di un video potentissimo ."
-          />
-        </Span>
-        <Span>info@azienda.com</Span>
-      </Section>
+    <Element name="contatti">
+      <FooterContainer>
+        <Section>
+          <h4>Contattaci!</h4>
+          <Span>
+            Riccardo
+            <WhatsAppLink
+              phoneNumber="393936582715"
+              message="Ciao, ti scrivo dal tuo sito ed ho bisogno di un video potentissimo ."
+            />
+          </Span>
+          <Span>
+            Lorenzo
+            <WhatsAppLink
+              phoneNumber="393936582715"
+              message="Ciao, ti scrivo dal tuo sito ed ho bisogno di un video potentissimo ."
+            />
+          </Span>
+          <Span>info@azienda.com</Span>
+        </Section>
 
-      <Section>
-        <h4>Seguici</h4>
-        <SocialIcons>
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faFacebook} style={{ color: "#FFD43B" }} />
-          </a>
-          <a
-            href="https://twitter.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faTwitter} style={{ color: "#FFD43B" }} />
-          </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faInstagram} style={{ color: "#FFD43B" }} />{" "}
-          </a>
-          <a
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faLinkedin} style={{ color: "#FFD43B" }} />{" "}
-          </a>
-        </SocialIcons>
-      </Section>
-    </FooterContainer>
+        <Section>
+          <h4>Seguici</h4>
+          <SocialIcons>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faFacebook} style={{ color: "#FFD43B" }} />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faTwitter} style={{ color: "#FFD43B" }} />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                style={{ color: "#FFD43B" }}
+              />{" "}
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FontAwesomeIcon icon={faLinkedin} style={{ color: "#FFD43B" }} />{" "}
+            </a>
+          </SocialIcons>
+        </Section>
+      </FooterContainer>
+    </Element>
   );
 };
 

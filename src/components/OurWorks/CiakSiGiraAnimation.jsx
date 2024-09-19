@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import cinepresa from "../../assets/Media/Photo/cinepresa.jpeg";
-// freepik-export-20240823104451ZN1X.png
+import cinepresa from "../../assets/Media/Photo/CiaksiGiraMultiGradient.jpeg";
 // Animazione per l'entrata della cinepresa da destra
 const slideInFromRight = keyframes`
   0% { transform: translateX(100vw); }
@@ -67,28 +66,58 @@ const CameraWrapper = styled.div`
 `;
 
 const CineCamera = ({ isVisible }) => {
-  const [delayedVisible, setDelayedVisible] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
+  const [isVisibleCiakIMG, setIsVisibleCiakIMG] = useState(false);
 
+  const [hasAnimatedCiakIMG, setHasAnimatedCiakIMG] = useState(false);
+
+  const CiakIMGRef = useRef(null);
+
+  // IntersectionObserver per l'elemento Pellicola (con threshold 0.3)
   useEffect(() => {
-    if (isVisible) {
-      // Reset the animation by updating the key
-      setAnimationKey((prevKey) => prevKey + 1);
+    const observerCiakIMG = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !hasAnimatedCiakIMG) {
+          setIsVisibleCiakIMG(true);
+          setHasAnimatedCiakIMG(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
 
-      const timer = setTimeout(() => {
-        setDelayedVisible(true);
-      }, 0); // Optional delay before animation
-
-      return () => clearTimeout(timer);
-    } else {
-      setDelayedVisible(false);
+    if (CiakIMGRef.current) {
+      observerCiakIMG.observe(CiakIMGRef.current);
     }
-  }, [isVisible]);
+
+    return () => {
+      if (CiakIMGRef.current) {
+        observerCiakIMG.unobserve(CiakIMGRef.current);
+      }
+    };
+  }, [hasAnimatedCiakIMG]);
+  // const [delayedVisible, setDelayedVisible] = useState(false);
+  // const [hasAnimated, setHasAnimated] = useState(false);
+  // const [animationKey, setAnimationKey] = useState(0);
+
+  // useEffect(() => {
+  //   if (isVisible) {
+  //     // Reset the animation by updating the key
+  //     setAnimationKey((prevKey) => prevKey + 1);
+
+  //     const timer = setTimeout(() => {
+  //       setDelayedVisible(true);
+  //     }, 0); // Optional delay before animation
+
+  //     return () => clearTimeout(timer);
+  //   } else {
+  //     setDelayedVisible(false);
+  //   }
+  // }, [isVisible]);
 
   return (
     <ScrollAnimationComponent
-      key={animationKey} // Force re-render to reset animation
-      className={delayedVisible ? "animate" : ""}
+      ref={CiakIMGRef}
+      className={isVisibleCiakIMG ? "animate" : ""}
     >
       <CameraWrapper />
     </ScrollAnimationComponent>

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
 const VerticalContainer = styled.div`
@@ -9,8 +9,9 @@ const VerticalContainer = styled.div`
   height: 10vh;
   width: 100%;
   background-color: #000;
+  opacity: 0.9;
   z-index: 100;
-  padding: 0em 2em;
+  padding: 0;
 `;
 
 const ContainerLink = styled.div`
@@ -28,26 +29,42 @@ const Drawer = () => {
   return (
     <VerticalContainer>
       <ContainerLink>
-        <div>
-          <NavLink
-            style={{
-              color: "#ffc300", // Cambia il colore se il link è attivo
-              textDecoration: "none", // Rimuove la sottolineatura
-            }}
-            to="/"
-          >
-            Homepage
-          </NavLink>
-        </div>
-        <NavLink
+        <Link
+          to="chiSiamo"
+          smooth={true} // Attiva lo scrolling fluido
+          duration={1400} // Durata della transizione in millisecondi (1400ms)
           style={{
-            color: "#ffc300", // Cambia il colore se il link è attivo
-            textDecoration: "none", // Rimuove la sottolineatura
+            color: "#ffc300",
+            textDecoration: "none",
+            cursor: "pointer",
           }}
-          to="/contatti"
+        >
+          Chi Siamo
+        </Link>
+        <Link
+          to="OurWorks"
+          smooth={true} // Attiva lo scrolling fluido
+          duration={1400} // Durata della transizione in millisecondi (1400ms)
+          style={{
+            color: "#ffc300",
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
+        >
+          Lavori
+        </Link>
+        <Link
+          to="contatti"
+          smooth={true} // Attiva lo scrolling fluido
+          duration={1400} // Durata della transizione in millisecondi (1400ms)
+          style={{
+            color: "#ffc300",
+            textDecoration: "none",
+            cursor: "pointer",
+          }}
         >
           Contatti
-        </NavLink>
+        </Link>
       </ContainerLink>
     </VerticalContainer>
   );
