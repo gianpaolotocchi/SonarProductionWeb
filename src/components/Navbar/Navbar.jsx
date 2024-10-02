@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import logoSvg from "../../assets/Test-Logo.svg.png";
+import logoSonar from "../../assets/Media/Photo/logo-sonar.jpg";
 import MenuLogo from "../../assets/Media/Photo/icons8-fotocamera-100.png";
 import { useNavigate } from "react-router-dom";
 
@@ -19,15 +19,16 @@ const Container = styled.div`
 `;
 
 const Logo = styled.img`
-  widht: 100px;
-  height: 100%;
+  widht: 90px;
+  height: 90%;
+  border-radius: 50%;
   margin-left: 2vh;
   cursor: pointer;
 `;
 
 const Menu = styled.img`
   widht: 100px;
-  height: 100%;
+  height: 90%;
   padding: 1vh;
   border-radius: 1vh;
   cursor: pointer;
@@ -38,7 +39,7 @@ const Navbar = (props) => {
   const navigate = useNavigate();
   return (
     <Container>
-      <Logo src={logoSvg} alt="" onClick={() => navigate("/")} />
+      <Logo src={logoSonar} alt="" onClick={() => navigate("/")} />
       <Menu
         src={MenuLogo}
         alt=""

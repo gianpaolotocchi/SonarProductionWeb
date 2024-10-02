@@ -75,7 +75,7 @@ const WhatsAppButton = styled.a`
     margin-left: 1vh;
   }
   :hover {
-    color: #5cf700; /* Cambia il colore al passaggio del mouse */
+    // color: #5cf700; /* Cambia il colore al passaggio del mouse */
     transform: scale(1.2); /* Ingrandisci senza spostare gli altri elementi */
     transition: 0.3s;
     margin-left: 1vh;
@@ -102,7 +102,7 @@ const Footer = () => {
     <Element name="contatti">
       <FooterContainer>
         <Section>
-          <h4>Contattaci!</h4>
+          <h2>Contattaci!</h2>
           <Span>
             Riccardo
             <WhatsAppLink
@@ -121,7 +121,7 @@ const Footer = () => {
         </Section>
 
         <Section>
-          <h4>Seguici</h4>
+          <h2>Seguici</h2>
           <SocialIcons>
             <a
               href="https://facebook.com"
@@ -130,13 +130,13 @@ const Footer = () => {
             >
               <FontAwesomeIcon icon={faFacebook} style={{ color: "#FFD43B" }} />
             </a>
-            <a
+            {/* <a
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faTwitter} style={{ color: "#FFD43B" }} />
-            </a>
+            </a> */}
             <a
               href="https://instagram.com"
               target="_blank"
@@ -147,13 +147,13 @@ const Footer = () => {
                 style={{ color: "#FFD43B" }}
               />{" "}
             </a>
-            <a
+            {/* <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faLinkedin} style={{ color: "#FFD43B" }} />{" "}
-            </a>
+            </a> */}
           </SocialIcons>
         </Section>
       </FooterContainer>
