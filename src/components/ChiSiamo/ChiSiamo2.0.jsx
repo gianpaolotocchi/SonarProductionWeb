@@ -27,7 +27,7 @@ const ContTitle = styled.div`
   background-image: url(${Pellicola});
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +67,7 @@ const ContText = styled.div`
   left: 20%;
   @media (max-width: 768px) {
     width: 90%;
-    top: auto;
+    top: 25%;
     left: auto;
   }
 `;
@@ -80,6 +80,8 @@ const BodyText = styled.h4`
   z-index: 2;
   position: relative;
   margin: 0;
+
+  // brush non funzionante da rivedere
 
   // &::before {
   //   content: "";
@@ -127,8 +129,8 @@ const ContIMG = styled.div`
   }
 
   @media (max-width: 768px) {
-    top: 76.7%;
-    left: 0%;
+    top: 71.7%;
+    left: 9%;
   }
 `;
 

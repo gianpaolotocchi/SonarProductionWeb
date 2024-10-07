@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Element } from "react-scroll";
 import CiakSiGiraIMG from "./CiakSiGiraAnimation";
-import BrushStrokeAnimation from "./ScrollAnimationComponent";
+// import BrushStrokeAnimation from "./ScrollAnimationComponent";
 import TitleOurWork from "./TitleOurWork";
 // import ContWaveUP from "./interSection";
 import Slider from "../Slider/Slider";
@@ -10,13 +10,19 @@ import FootSection from "./FootSection";
 import styled from "styled-components";
 
 const ContentSection = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: #fde34d;
-  padding: 20px 0;
+  padding: 2vh 0 0 0;
   margin: 0;
   position: relative;
   overflow: hidden;
+  @media (max-width: 768px) {
+    padding: 2vh 0 12vh 0;
+  }
+  @media (max-width: 1440) {
+    padding: 2vh 0 6vh 0;
+  }
 `;
 const ContWaveUP = styled.div`
   width: 100%;

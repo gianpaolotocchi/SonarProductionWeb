@@ -32,7 +32,7 @@ const Paragraph = styled.p`
   margin: -4vh; /* Spazio tra il paragrafo e il bottone */
 
   @media (max-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1 rem;
     text-align: center;
     padding: 0 1vh;
 
@@ -49,7 +49,7 @@ const ButtonLink = styled.a`
   background-color: #ffc300;
   color: #000;
   font-size: 1.5rem;
-  padding: 3vh 5vh;
+  padding: 2vh 4vh;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -69,7 +69,7 @@ const ButtonLink = styled.a`
   @media (max-width: 768px) {
     padding: 20px 40px;
     margin-bottom: 20px; /* Spazio tra il bottone e il footer */
-    transform: translateX(10%) translateY(50%) scale(1.2) !important;
+    transform: translateX(1%) translateY(28%) scale(1.2) !important;
     font-size: 1.3rem;
   }
   @media (min-width: 769px) {
@@ -123,10 +123,10 @@ const FootSection = () => {
   return (
     <ContainerSection>
       <Paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde animi
-        ratione sunt nemo dolore! Quae, optio? Nostrum quae iure ducimus?
-        Molestiae magnam consectetur placeat odit nemo non vel necessitatibus
-        animi?
+        Per ulteriori contenuti esclusivi e approfondimenti sui nostri lavori,
+        visita il nostro canale YouTube. Qui troverai video che raccontano le
+        nostre esperienze e il nostro processo creativo. Non dimenticare di
+        iscriverti per rimanere aggiornato sulle ultime novità!
       </Paragraph>
       <ButtonLink
         href="https://www.youtube.com/@sonarproductions_video"

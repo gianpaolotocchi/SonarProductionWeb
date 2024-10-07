@@ -42,16 +42,22 @@ const ScrollAnimationComponent = styled.div`
     animation: ${slideInFromRight} 2s ease-out forwards;
   }
   @media (max-width: 768px) {
-    top: 3%;
-    left: 55%;
-    width: 30vw;
-    height: 30vh;
+    top: 3% !important;
+    left: 65% !important;
+    width: 33vw !important;
+    height: 33vh !important;
   }
-  @media (max-width: 1140px) {
+  @media (max-width: 1440px) {
     top: 8%;
-    left: 65%;
-    width: 35vw;
-    height: 35vh;
+    left: 75%;
+    width: 25vw;
+    height: 25vh;
+  }
+  @media (min-width: 1440px) {
+    top: 8%;
+    left: 70%;
+    width: 33vw;
+    height: 33vh;
   }
 `;
 const CameraWrapper = styled.div`

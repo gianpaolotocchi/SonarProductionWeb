@@ -7,7 +7,6 @@ const ContentSection = styled.div`
   width: 100%;
   background-color: transparent;
 
-  margin: 0;
   position: relative;
   overflow: hidden;
 `;
