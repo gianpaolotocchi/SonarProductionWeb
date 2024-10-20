@@ -10,7 +10,7 @@ const ContainerSection = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column; /* Gli elementi sono disposti in fila */
-  margin-bottom: 5%; /* Spazio tra il contenitore e il footer */
+
   padding: 0;
   @media (max-width: 768px) {
     flex-direction: column; /* Disposizione a colonna per schermi piccoli */
@@ -20,7 +20,7 @@ const ContainerSection = styled.div`
   }
   @media (min-width: 769px) {
     width: 100%;
-    justify-content: end;
+
     align-items: end;
   }
 `;
@@ -29,10 +29,9 @@ const ContainerSection = styled.div`
 const Paragraph = styled.p`
   color: #000;
   text-align: justify;
-  margin: -4vh; /* Spazio tra il paragrafo e il bottone */
 
   @media (max-width: 768px) {
-    font-size: 1 rem;
+    font-size: 1.2rem;
     text-align: center;
     padding: 0 1vh;
 
@@ -43,10 +42,11 @@ const Paragraph = styled.p`
     font-size: 1.3rem;
     text-align: start;
     margin-right: 2vh;
+    transform: translateX(0%) translateY(10%);
   }
 `;
 const ButtonLink = styled.a`
-  background-color: #ffc300;
+  background-color: #fde34d;
   color: #000;
   font-size: 1.5rem;
   padding: 2vh 4vh;
@@ -63,17 +63,17 @@ const ButtonLink = styled.a`
   &:hover {
     background-color: #000;
     color: #ffc300 !important;
-    transform: translateX(-40%) translateY(50%) scale(1.2);
+    transform: translateX(-40%) translateY(0%) scale(1.2);
   }
 
   @media (max-width: 768px) {
-    padding: 20px 40px;
+    padding: 13px 26px;
     margin-bottom: 20px; /* Spazio tra il bottone e il footer */
-    transform: translateX(1%) translateY(28%) scale(1.2) !important;
-    font-size: 1.3rem;
+    transform: translateX(1%) translateY(0) scale(1.2) !important;
+    font-size: 1rem;
   }
   @media (min-width: 769px) {
-    transform: translateX(-40%) translateY(50%);
+    transform: translateX(-40%) translateY(0%);
   }
 `;
 

@@ -47,13 +47,13 @@ const Card = styled.div`
 
   @media (max-width: 1440px) {
     min-width: 24vw;
-    height: 65vh;
+    height: 55vh;
   }
 
   @media (min-width: 1440px) {
     margin-top: 8vh;
     min-width: 24vw;
-    height: 65vh;
+    height: 55vh;
   }
 `;
 

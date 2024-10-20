@@ -16,12 +16,13 @@ const TitleOur = styled.h1`
   z-index: 2;
 
   color: #ffc300;
-  font-size: 3.5rem;
+  font-size: 4.5rem;
   // text-align: start;
-  margin: 2vh 0 2vh 6vw;
+  margin: 2vh 0 0 6vw;
 
   @media (max-width: 768px) {
     margin: 2vh 0 0 6vw;
+    font-size: 3.5rem;
   }
 `;
 
@@ -29,12 +30,18 @@ const TitleWork = styled.h2`
   position: relative;
   z-index: 2;
   color: #000;
-  margin: 0;
-  margin-left: 10vw;
-  font-size: 3rem;
+
+  margin: 0 0 1vh 10vw;
+
+  font-size: 5rem;
 
   @media (max-width: 768px) {
-    margin-left: 15vw;
+    margin-left: 10vw;
+    font-size: 3.8rem;
+  }
+  @media (min-width: 1440px) {
+    margin-left: 10vw;
+    padding-top: 2vh !important;
   }
 `;
 

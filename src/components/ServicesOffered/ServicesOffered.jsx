@@ -1,6 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import AnimationPage from "./AnimationPage";
+const slideIn = keyframes`
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -36,32 +46,11 @@ const ContWaveUP = styled.div`
 
 const TitleServices = styled.h1`
   font-size: 3rem;
-  color: rgb(255, 195, 0);
+  color: rgb(0, 0, 0);
   text-align: center;
-`;
-
-const ContImg = styled.div`
-  height: 200px;
-  width: 300px;
-  background-image: url("https://picsum.photos/seed/picsum/200/300");
-  background-size: cover;
-  background-position: contain;
-  background-repeat: no-repeat;
-  border-radius: 5vh;
-  margin-bottom: 30px;
-`;
-
-const ContFoot = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 colonne su schermi piccoli */
-  gap: 20px;
-  width: 100%;
-  padding: 0;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr); /* 4 colonne su schermi più grandi */
-    gap: 80px;
-  }
+  z-index: 2;
+  transform: translateY(-30%);
+  animation: ${(props) => (props.isVisible ? slideIn : "none")} 2s ease-out;
 `;
 
 const ButtonContainer = styled.div`
@@ -121,36 +110,138 @@ const ButtonContact = styled.button`
   }
 `;
 
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const GridItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 2s ease-out, transform 2s ease-out;
+  }
+
+  /* Invert the content for specific items */
+  &.invert {
+    transform: scaleX(-1); /* Flip horizontally */
+  }
+
+  @media (min-width: 768px) {
+    padding: 30px;
+    flex-direction: row; /* Change to horizontal on larger screens */
+  }
+`;
+
+const GridImage = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 9px solid #ffc300;
+  object-fit: cover;
+  margin-bottom: 10px;
+
+  @media (min-width: 768px) {
+    width: 280px;
+    height: 280px;
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+`;
+
+const ServiceDescription = styled.p`
+  flex: 1;
+  font-size: 1.5rem;
+  text-align: start;
+  padding: 0 30px;
+  margin: 0;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  /* Invert the description text */
+  &.invert {
+    transform: scaleX(-1);
+  }
+`;
+
 const ServicesOffered = () => {
-  // const [isAnimationVisible, setIsAnimationVisible] = useState(true);
-  // const contFootRef = useRef(null);
-  // const animationRef = useRef(null);
+  const [isAnimationVisible, setIsAnimationVisible] = useState(false);
+  const titleRef = useRef(null);
+  const gridRefs = useRef([]);
 
-  // useEffect(() => {
-  //   if (animationRef.current) {
-  //     const animationObserver = new IntersectionObserver(
-  //       ([entry]) => {
-  //         if (entry.isIntersecting) {
-  //           setIsAnimationVisible(true);
-  //         } else {
-  //           setIsAnimationVisible(false);
-  //         }
-  //       },
-  //       { threshold: 0.5 }
-  //     );
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsAnimationVisible(true);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
 
-  //     animationObserver.observe(animationRef.current);
+    if (titleRef.current) {
+      observer.observe(titleRef.current);
+    }
 
-  //     return () => {
-  //       if (animationRef.current)
-  //         animationObserver.unobserve(animationRef.current);
-  //     };
-  //   }
-  // }, []);
+    return () => {
+      if (titleRef.current) {
+        observer.unobserve(titleRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+          }
+          // else {
+          //   entry.target.classList.remove("animate");
+          // }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    gridRefs.current.forEach((ref) => {
+      if (ref) {
+        observer.observe(ref);
+      }
+    });
+
+    return () => {
+      gridRefs.current.forEach((ref) => {
+        if (ref) {
+          observer.unobserve(ref);
+        }
+      });
+    };
+  }, []);
 
   return (
     <Container>
-      <TitleServices>Services Offered</TitleServices>
+      <TitleServices ref={titleRef} isVisible={isAnimationVisible}>
+        Services Offered
+      </TitleServices>
       <ContWaveUP>
         <svg
           transform="scale(-1, 1)"
@@ -160,11 +251,62 @@ const ServicesOffered = () => {
           <path d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"></path>
         </svg>
       </ContWaveUP>
+
+      <GridContainer>
+        {/* Primo GridItem */}
+        <GridItem ref={(el) => (gridRefs.current[0] = el)}>
+          <GridImage src="https://picsum.photos/200/300" alt="Service 1" />
+          <ServiceDescription>
+            <h2>Consulenza e Pianificazione Creativa</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            nostrum, illum eligendi a reprehenderit illo magnam harum eaque
+            tempore, exercitationem porro aut provident? Recusandae nulla enim
+            reiciendis sit voluptates sequi.Description
+          </ServiceDescription>
+        </GridItem>
+
+        {/* Secondo GridItem con inversione */}
+        <GridItem ref={(el) => (gridRefs.current[1] = el)} className="invert">
+          <GridImage src="https://picsum.photos/200/300" alt="Service 2" />
+          <ServiceDescription className="invert">
+            <h2>Riprese Video</h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+            voluptates voluptate inventore soluta. Placeat facilis aliquid id
+            pariatur. Sapiente aliquid ratione, asperiores facilis velit
+            voluptatibus modi necessitatibus ducimus quo earum.Service 2
+            Description
+          </ServiceDescription>
+        </GridItem>
+
+        {/* Terzo GridItem */}
+        <GridItem ref={(el) => (gridRefs.current[2] = el)}>
+          <GridImage src="https://picsum.photos/200/300" alt="Service 3" />
+          <ServiceDescription>
+            <h2>Montaggio Video</h2>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+            error nemo officia eum! Perferendis enim tempore nam sed beatae
+            autem et facilis, assumenda accusantium labore, minima culpa sit,
+            reiciendis cum?Service 3 Description
+          </ServiceDescription>
+        </GridItem>
+
+        {/* Quarto GridItem */}
+        <GridItem className="invert" ref={(el) => (gridRefs.current[3] = el)}>
+          <GridImage src="https://picsum.photos/200/300" alt="Service 3" />
+          <ServiceDescription className="invert">
+            <h2>Post-Produzione</h2>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum
+            error nemo officia eum! Perferendis enim tempore nam sed beatae
+            autem et facilis, assumenda accusantium labore, minima culpa sit,
+            reiciendis cum?Service 3 Description
+          </ServiceDescription>
+        </GridItem>
+      </GridContainer>
       {/* <div ref={animationRef}>
         <AnimationPage isVisible={isAnimationVisible} />
       </div> */}
-      <ContImg />
-      <ContFoot></ContFoot>
+      {/* <ContImg /> */}
+      {/* <ContFoot></ContFoot> */}
       <ButtonContainer>
         <Paragraph>
           Contact us for more information on the services offered

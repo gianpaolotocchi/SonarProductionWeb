@@ -20,8 +20,11 @@ const ContentSection = styled.div`
   @media (max-width: 768px) {
     padding: 2vh 0 12vh 0;
   }
-  @media (max-width: 1440) {
-    padding: 2vh 0 6vh 0;
+  @media (max-width: 1440px) {
+    height: 101.5vh;
+  }
+  @media (min-width: 1440px) {
+    padding: 2vh 0 7vh 0;
   }
 `;
 const ContWaveUP = styled.div`

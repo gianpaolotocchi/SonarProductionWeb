@@ -22,7 +22,7 @@ const slideInFromRightPellicola = keyframes`
   100% { transform: translateX(0); }
 `;
 const ContTitle = styled.div`
-  height: 32vh;
+  height: 28vh;
   width: 100%;
   background-image: url(${Pellicola});
   background-size: contain;
@@ -42,7 +42,10 @@ const ContTitle = styled.div`
       cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
   @media (max-width: 768px) {
-    justify-content: center;
+    height: 25vh;
+    justify-content: start;
+    background-size: cover;
+    background-repeat: no-repeat;
     // transform: translate(0%, -130%);
   }
 `;
@@ -55,7 +58,7 @@ const TitlePage = styled.h1`
   margin: 1vw;
   z-index: 3;
   @media (max-width: 768px) {
-    font-size: calc(1.2rem + 2vw);
+    // font-size: calc(1.5rem + 2vw);
   }
 `;
 
@@ -63,7 +66,7 @@ const ContText = styled.div`
   width: 60%;
   z-index: 2;
   position: absolute;
-  top: 45%;
+  top: 39%;
   left: 20%;
   @media (max-width: 768px) {
     width: 90%;

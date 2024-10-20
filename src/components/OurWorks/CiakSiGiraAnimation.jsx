@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import cinepresa from "../../assets/Media/Photo/CiaksiGiraMultiGradient.jpeg";
-// Animazione per l'entrata della cinepresa da destra
+import CiaksiGiraIMG from "../../assets/Media/Photo/CiaksiGiraMultiGradient.jpeg";
+// Animazione per l'entrata della CiaksiGiraIMG da destra
 const slideInFromRight = keyframes`
   0% { transform: translateX(100vw); }
   100% { transform: translateX(0); }
@@ -42,10 +42,10 @@ const ScrollAnimationComponent = styled.div`
     animation: ${slideInFromRight} 2s ease-out forwards;
   }
   @media (max-width: 768px) {
-    top: 3% !important;
-    left: 65% !important;
-    width: 33vw !important;
-    height: 33vh !important;
+    top: 2% !important;
+    left: 60% !important;
+    width: 38vw !important;
+    height: 38vh !important;
   }
   @media (max-width: 1440px) {
     top: 8%;
@@ -54,16 +54,16 @@ const ScrollAnimationComponent = styled.div`
     height: 25vh;
   }
   @media (min-width: 1440px) {
-    top: 8%;
-    left: 70%;
-    width: 33vw;
-    height: 33vh;
+    top: 7%;
+    left: 74%;
+    width: 34vw;
+    height: 34vh;
   }
 `;
 const CameraWrapper = styled.div`
   width: 100%;
   height: 100%;
-  background-image: url(${cinepresa});
+  background-image: url(${CiaksiGiraIMG});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

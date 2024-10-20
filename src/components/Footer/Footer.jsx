@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+// import WaveUp from "./WaveUp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faInstagram,
@@ -11,7 +12,7 @@ import {
 import { Element } from "react-scroll";
 
 const FooterContainer = styled.div`
-  background-color: black;
+  background-color: #fde34d;
   color: white;
   padding-bottom: 2vh;
   text-align: center;
@@ -26,7 +27,7 @@ const FooterContainer = styled.div`
 
 const Section = styled.div`
   margin: 10px;
-
+  z-index: 2;
   @media (min-width: 768px) {
     flex: 1;
   }
@@ -36,7 +37,7 @@ const Span = styled.span`
   margin-left: 7vh;
   display: inline;
   font-weight: bold;
-  color: #ffd43b;
+  color: #000;
   @media (max-width: 768px) {
     font-size: 0.5rem;
     margin-left: 4vh;
@@ -54,7 +55,7 @@ const SocialIcons = styled.div`
     text-decoration: none;
 
     :hover {
-      color: yellow; /* Cambia il colore al passaggio del mouse */
+      color: black; /* Cambia il colore al passaggio del mouse */
 transform: scale(1.1); /* Ingrandisci senza spostare gli altri elementi */
     }
       @media (max-width: 768px) {
@@ -81,6 +82,27 @@ const WhatsAppButton = styled.a`
     margin-left: 1vh;
   }
 `;
+const ContWaveUP = styled.div`
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 1; /* Assicurati che sia sotto gli altri elementi */
+  overflow: hidden;
+  line-height: 0;
+
+  svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 15vh;
+    transform: rotate(180deg); /* Ruota la wave */
+  }
+
+  .shape-fill {
+    fill: #000;
+  }
+`;
 const WhatsAppLink = ({ phoneNumber, message }) => {
   // Costruisci l'URL WhatsApp
   const encodedMessage = encodeURIComponent(message);
@@ -101,6 +123,14 @@ const Footer = () => {
   return (
     <Element name="contatti">
       <FooterContainer>
+        <ContWaveUP>
+          <svg viewBox="0 0 1800 120" preserveAspectRatio="none">
+            <path
+              d="M3000,70 C2850,50 2700,60 2550,30 C2400,0 2250,40 2100,20 C1950,-10 1800,0 0,50 V120 H3000 Z"
+              className="shape-fill"
+            ></path>
+          </svg>{" "}
+        </ContWaveUP>
         <Section>
           <h2>Contattaci!</h2>
           <Span>
@@ -128,7 +158,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faFacebook} style={{ color: "#FFD43B" }} />
+              <FontAwesomeIcon icon={faFacebook} style={{ color: "#000" }} />
             </a>
             {/* <a
               href="https://twitter.com"
@@ -138,14 +168,11 @@ const Footer = () => {
               <FontAwesomeIcon icon={faTwitter} style={{ color: "#FFD43B" }} />
             </a> */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/sonarproductions_"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                style={{ color: "#FFD43B" }}
-              />{" "}
+              <FontAwesomeIcon icon={faInstagram} style={{ color: "#000" }} />{" "}
             </a>
             {/* <a
               href="https://linkedin.com"
